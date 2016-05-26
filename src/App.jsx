@@ -1,5 +1,6 @@
 import React from 'react';
 import Todos from './reactComponents/Todos.jsx';
+import Entry from './reactComponents/Entry.jsx';
 
 var App = React.createClass({
   remove(i) {
@@ -9,12 +10,16 @@ var App = React.createClass({
       return { todos };
     });
   },
+  add(text) {
+    this.setState(function(previousState, currentProps) {
+      var todos = previousState.todos;
+      todos.push({text});
+      return { todos };
+    });
+  },
   getInitialState() {
     return {
-      todos: [
-        {text: "first todo"},
-        {text: "second todo"}
-      ]
+      todos: []
     }
   },
   render() {
@@ -22,6 +27,7 @@ var App = React.createClass({
     return (
       <div>
         <h2>Some todos.</h2>
+        <Entry buttonText="Add todo" addEntry={this.add} />
         <Todos todos={this.state.todos} remove={this.remove} />
       </div>
     );

@@ -35,6 +35,27 @@
     }
   });
 
+  var Entry = React$1.createClass({
+    displayName: 'Entry',
+    addEntry: function addEntry() {
+      var input = this.refs.myInput;
+      this.props.addEntry(input.value);
+      input.value = '';
+    },
+    render: function render() {
+      return React$1.createElement(
+        'span',
+        null,
+        React$1.createElement('input', { type: 'text', ref: 'myInput', placeholder: this.props.placeholder }),
+        React$1.createElement(
+          'button',
+          { onClick: this.addEntry },
+          this.props.buttonText
+        )
+      );
+    }
+  });
+
   var App = React$1.createClass({
     displayName: 'App',
     remove: function remove(i) {
@@ -44,9 +65,16 @@
         return { todos: todos };
       });
     },
+    add: function add(text) {
+      this.setState(function (previousState, currentProps) {
+        var todos = previousState.todos;
+        todos.push({ text: text });
+        return { todos: todos };
+      });
+    },
     getInitialState: function getInitialState() {
       return {
-        todos: [{ text: "first todo" }, { text: "second todo" }]
+        todos: []
       };
     },
     render: function render() {
@@ -59,6 +87,7 @@
           null,
           'Some todos.'
         ),
+        React$1.createElement(Entry, { buttonText: 'Add todo', addEntry: this.add }),
         React$1.createElement(Todos, { todos: this.state.todos, remove: this.remove })
       );
     }
