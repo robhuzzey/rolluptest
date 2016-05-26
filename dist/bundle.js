@@ -57,7 +57,7 @@
         React$1.createElement(
           'h2',
           null,
-          'Some todos!'
+          'Some todos.'
         ),
         React$1.createElement(Todos, { todos: this.state.todos, remove: this.remove })
       );

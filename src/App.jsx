@@ -21,7 +21,7 @@ var App = React.createClass({
     var self = this;
     return (
       <div>
-        <h2>Some todos!</h2>
+        <h2>Some todos.</h2>
         <Todos todos={this.state.todos} remove={this.remove} />
       </div>
     );
