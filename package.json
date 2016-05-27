@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "watch 'npm run build' src",
+    "start": "npm-run-all --parallel css js",
+    "css": "node-sass -w src/assets/scss/style.scss dest/style.css",
+    "js": "watch 'npm run build' src",
     "build": "rollup -c",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,6 +15,8 @@
   "devDependencies": {
     "babel-preset-es2015-rollup": "^1.1.1",
     "babel-preset-react": "^6.5.0",
+    "node-sass": "^3.7.0",
+    "npm-run-all": "^2.1.1",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "rollup": "^0.26.3",

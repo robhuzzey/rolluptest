@@ -87,7 +87,7 @@
           null,
           'Some todos.'
         ),
-        React$1.createElement(Entry, { buttonText: 'Add todo', addEntry: this.add }),
+        React$1.createElement(Entry, { buttonText: 'Add todo!', addEntry: this.add }),
         React$1.createElement(Todos, { todos: this.state.todos, remove: this.remove })
       );
     }

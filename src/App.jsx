@@ -27,7 +27,7 @@ var App = React.createClass({
     return (
       <div>
         <h2>Some todos.</h2>
-        <Entry buttonText="Add todo" addEntry={this.add} />
+        <Entry buttonText="Add todo!" addEntry={this.add} />
         <Todos todos={this.state.todos} remove={this.remove} />
       </div>
     );
